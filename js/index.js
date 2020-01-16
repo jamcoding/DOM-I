@@ -37,6 +37,9 @@ const siteContent = {
   },
 };
 
+const br = document.createElement('br');
+const newLink = document.createElement('a');
+
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
@@ -49,20 +52,31 @@ links[3].textContent = siteContent['nav']['nav-item-4'];
 links[4].textContent = siteContent['nav']['nav-item-5'];
 links[5].textContent = siteContent['nav']['nav-item-6'];
 
+links.appendChild(newLink).textContent = "Test";
+// links.prepend(newLink.cloneNode(true));
+
+// nav text color
 Array.from(links).forEach(element => {
   element.style.color = "green";
 });
 
 // cta
-let h1Tag = document.querySelector("section.cta .cta-text h1");
-h1Tag.textContent = siteContent['cta']['h1'];
+let h1Tag = document.querySelector('h1');
+let h1MiddleText = document.createTextNode('IS');
+let h1BottomText = document.createTextNode('AWESOME');
+
+h1Tag.textContent = 'DOM';
+h1Tag.appendChild(br.cloneNode(true));
+h1Tag.appendChild(h1MiddleText);
+h1Tag.appendChild(br.cloneNode(true));
+h1Tag.appendChild(h1BottomText);
+
 
 let ctaButton = document.querySelector("section.cta .cta-text button");
 ctaButton.textContent = siteContent['cta']['button'];
 
 let ctaImg = document.getElementById("cta-img");
 ctaImg.setAttribute('src', siteContent["cta"]["img-src"]);
-
 
 // main-content
 // top content
@@ -93,7 +107,11 @@ pTag[4].textContent = siteContent['main-content']['vision-content'];
 let contactHeader = document.querySelector("section.contact h4");
 contactHeader.textContent = siteContent["contact"]["contact-h4"];
 
-pTag[5].textContent = siteContent["contact"]["address"];
+let country = document.createTextNode('Somewhere, USA');
+
+pTag[5].textContent = "123 Way 456 Street";
+pTag[5].appendChild(br.cloneNode(true));
+pTag[5].appendChild(country);
 pTag[6].textContent = siteContent["contact"]["phone"];
 pTag[7].textContent = siteContent["contact"]["email"];
 
